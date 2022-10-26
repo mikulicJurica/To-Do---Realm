@@ -1,12 +1,15 @@
 import UIKit
 import SnapKit
+import RealmSwift
 
 class HomeViewController: UIViewController {
     
     private var topBarAddButton: UIBarButtonItem!
     private var tableView: UITableView!
     
-    //private var itemsList: [ToDoListItem]!
+    private var realm = try! Realm()
+    
+    private var itemsList = List<ToDoItem>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +20,11 @@ class HomeViewController: UIViewController {
         buildConstraints()
         
         //get data
+        //deleteDatabase()
+        getDataFromDatabase()
+        
+        
+        
     }
     
     private func buildTopBar() {
@@ -54,15 +62,52 @@ class HomeViewController: UIViewController {
         let alert = UIAlertController(title: "New TO DO Item", message: "Enter new task", preferredStyle: .alert)
         alert.addTextField()
         alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak alert] _ in
-//            guard let textFieldData = alert?.textFields?[0].text else {
-//                fatalError()
-//            }
+            guard let textFieldData = alert?.textFields?[0].text else {
+                fatalError()
+            }
         
             //create new item in database
+            self.saveToDatabase(newText: textFieldData)
             
         }))
         present(alert, animated: true)
     }
+    
+    
+    
+    
+    private func getDataFromDatabase() -> List<ToDoItem> {
+        let items = realm.objects(ToDoItem.self)
+        return items
+    }
+    
+    private func saveToDatabase(newText: String) {
+        let newToDo = ToDoItem()
+        newToDo.textToDo = newText
+        newToDo.createdAt = Date()
+        
+        try! realm.write {
+            realm.add(newToDo)
+        }
+    }
+    
+    private func deleteDatabase() {
+        self.realm.beginWrite()
+        self.realm.delete(realm.objects(ToDoItem.self))
+        try! self.realm.commitWrite()
+    }
+    
+    private func updateDatabase() {
+        
+    }
+    
+    private func findByText(text: String) -> Results<ToDoItem> {
+        let predicate = NSPredicate(format: "textToDo = %@", text)
+        return realm.objects(ToDoItem.self).filter(predicate)
+    }
+    
+    
+    
 
 }
 
@@ -116,4 +161,11 @@ extension HomeViewController: UITableViewDelegate {
         
         present(sheet, animated: true)
     }
+}
+
+
+
+class ToDoItem: Object {
+    @objc dynamic var textToDo: String = ""
+    @objc dynamic var createdAt: Date = Date()
 }
