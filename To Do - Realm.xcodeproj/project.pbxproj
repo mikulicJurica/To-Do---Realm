@@ -16,6 +16,7 @@
 		280CAADF29089AB100F7E936 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280CAADE29089AB100F7E936 /* ToDoTableViewCell.swift */; };
 		280CAAE529099F1900F7E936 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 280CAAE429099F1900F7E936 /* Realm */; };
 		280CAAE729099F1900F7E936 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 280CAAE629099F1900F7E936 /* RealmSwift */; };
+		280CAAE9290A887100F7E936 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280CAAE8290A887100F7E936 /* ToDoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		280CAAD1290898E800F7E936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		280CAAD3290898E800F7E936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		280CAADE29089AB100F7E936 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		280CAAE8290A887100F7E936 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			children = (
 				280CAAC5290898DD00F7E936 /* AppDelegate.swift */,
 				280CAAC7290898DD00F7E936 /* SceneDelegate.swift */,
+				280CAAEA290A887800F7E936 /* Data Model */,
 				280CAADC29089A7F00F7E936 /* ViewControllers */,
 				280CAACE290898E800F7E936 /* Assets.xcassets */,
 				280CAAD0290898E800F7E936 /* LaunchScreen.storyboard */,
@@ -87,6 +90,14 @@
 				280CAADE29089AB100F7E936 /* ToDoTableViewCell.swift */,
 			);
 			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		280CAAEA290A887800F7E936 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				280CAAE8290A887100F7E936 /* ToDoItem.swift */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +181,7 @@
 			files = (
 				280CAACA290898DD00F7E936 /* HomeViewController.swift in Sources */,
 				280CAAC6290898DD00F7E936 /* AppDelegate.swift in Sources */,
+				280CAAE9290A887100F7E936 /* ToDoItem.swift in Sources */,
 				280CAAC8290898DD00F7E936 /* SceneDelegate.swift in Sources */,
 				280CAADF29089AB100F7E936 /* ToDoTableViewCell.swift in Sources */,
 			);

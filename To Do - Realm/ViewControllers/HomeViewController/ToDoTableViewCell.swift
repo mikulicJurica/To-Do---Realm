@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import RealmSwift
 
 class ToDoTableViewCell: UITableViewCell {
 
@@ -9,7 +10,7 @@ class ToDoTableViewCell: UITableViewCell {
     private var toDoText: UILabel!
     private var toDoDate: UILabel!
     
-    //private var cellItem: ToDoListItem!
+    private var cellItem: ToDoItem!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
@@ -59,13 +60,13 @@ class ToDoTableViewCell: UITableViewCell {
         })
     }
     
-//    func setCellData(toDoItem: ToDoListItem) {
-//        cellItem = toDoItem
-//        toDoText.text = cellItem.name
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd/MM/YY"
-//        toDoDate.text = dateFormatter.string(from: cellItem.createdAt!)
-//    }
+    func setCellData(toDoItem: ToDoItem) {
+        cellItem = toDoItem
+        toDoText.text = cellItem.textToDo
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YY"
+        toDoDate.text = dateFormatter.string(from: cellItem.createdAt)
+    }
     
 }
